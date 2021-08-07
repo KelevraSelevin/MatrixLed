@@ -20,6 +20,9 @@ public:
     // Временна строка для работы
     char tempString[100] = "";
 
+    /// Метод принимающий строку
+    /// Копирует эту строку в строку класса.
+    /// Приводит строку класса к нижнему регистру
     void SetString(char *inputString, int lenght)
     {
         for (int i = 0; i < lenght; i++)
@@ -30,6 +33,7 @@ public:
         ToLowerString();
     }
 
+    /// Метод приводит строку класса к нижнему регистру
     void ToLowerString()
     {
         for (int i = 0; i < strlen(tempString); i++)
@@ -38,6 +42,7 @@ public:
         }
     }
 
+    /// Выводит сроку. Но вообще это врменный метод. отадочный чтоли
     void GetString()
     {
         std::cout << tempString << std::endl;
