@@ -2,23 +2,37 @@
 
 #include <cstring>
 
-char parseString[100];
-
-int matrixSymbol[3][15] = {
+int matrixSymbol[10][15] = {
+    {1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1},
+    {1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1},
+    {1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1},
+    {1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1},
+    {1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1},
     {1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1},
     {1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1},
+    {1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1},
+    {1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1},
     {1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1}};
-
 
 class LedText
 {
+
 public:
+    /// Размер матрицы
+    /// В моем случае пока сделаю жестко заданный размер
+    /// Под моё кол-во диодов. Желательно переделать под любое кол-во
+    //TODO: Сделать возможность разных размеров матрицы
+    int matrixLed[5][17];
 
-    // Длина строки
-    int8_t lenghtString = 0;
+    LedText()
+    {
+        for (int y = 0; y < 5; y++)
 
-    // Временна строка для работы
-    char tempString[100] = "";
+            for (int x = 0; x < 17; x++)
+            {
+                matrixLed[y][x] = 9;
+            }
+    }
 
     /// Метод принимающий строку
     /// Копирует эту строку в строку класса.
@@ -45,20 +59,51 @@ public:
     /// Выводит сроку. Но вообще это врменный метод. отадочный чтоли
     void GetString()
     {
-        std::cout << tempString << std::endl;
+        //std::cout << tempString << std::endl;
+
+        /*    for (int i = 0; i < strlen(tempString); i++)
+        {
+            std::cout << SymbolToNumber(i) << "---";
+        }
+ */
+
+        for (int y = 0; y < 5; y++)
+        {
+            for (int x = 0; x < 17; x++)
+            {
+                std::cout << matrixLed[y][x];
+            }
+            std::cout << "" << std::endl;
+        }
     }
 
 private:
-    int a;
+    // Временная строка для работы
+    char tempString[100] = "";
+
+    /// Здесь будет метод записывающий в матрицу символы.
+    void WriteSymbolsToMatrix()
+    {
+        for (int i = 0; i < strlen(tempString); i++)
+        {
+            SymbolToNumber(i);
+        }
+    }
+
+    ///
+    int SymbolToNumber(int index)
+    {
+        return (int)tempString[index] - 48;
+    }
 };
 
 int main()
 {
     LedText text;
 
-    char stringInput[100] = "HellO WoRlD";
+    char parseString[100] = "12 : 56";
 
-    text.SetString(stringInput, strlen(stringInput));
+    text.SetString(parseString, strlen(parseString));
 
     text.GetString();
 
