@@ -30,7 +30,7 @@ public:
 
             for (int x = 0; x < 17; x++)
             {
-                matrixLed[y][x] = 9;
+                matrixLed[y][x] = 0;
             }
     }
 
@@ -57,21 +57,24 @@ public:
     }
 
     /// Выводит сроку. Но вообще это врменный метод. отадочный чтоли
-    void GetString()
+    void ShowInformation()
     {
         //std::cout << tempString << std::endl;
 
-        /*    for (int i = 0; i < strlen(tempString); i++)
+        std::cout << "Input String" << std::endl;
+        for (int i = 0; i < strlen(tempString); i++)
         {
             std::cout << SymbolToNumber(i) << "---";
         }
- */
 
+
+        std::cout << "" << std::endl;
+        std::cout << "Matrix Led" << std::endl;
         for (int y = 0; y < 5; y++)
         {
             for (int x = 0; x < 17; x++)
             {
-                std::cout << matrixLed[y][x];
+                std::cout << matrixLed[y][x] << " ";
             }
             std::cout << "" << std::endl;
         }
@@ -105,7 +108,7 @@ int main()
 
     text.SetString(parseString, strlen(parseString));
 
-    text.GetString();
+    text.ShowInformation();
 
     return 0;
 }
