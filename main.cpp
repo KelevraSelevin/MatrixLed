@@ -104,7 +104,7 @@ int main()
 {
     LedText text;
 
-    char parseString[100] = "1256";
+    char parseString[100] = "67";
 
     text.SetString(parseString, strlen(parseString));
 
